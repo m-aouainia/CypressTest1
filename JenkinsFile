@@ -19,7 +19,7 @@ pipeline {
             steps {
                 bat "npm install"
                 bat "npx cypress open"
-                bat "npm cypress run --browser=${BROWSER} --spec ${SPEC}" 
+                bat "npm run --browser=${BROWSER} --spec ${SPEC}" 
             }
         }
         stage('Deploy') {
@@ -28,10 +28,10 @@ pipeline {
             }
         }
     }
-    /**post{
+    post{
         always{
-            publishHTML([allowMissing: false. alwaysLinkToLastBuild: false, keepAll:])
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
         }
-    }**/
+    }
 }
 //follow this link: https://www.youtube.com/watch?v=Gf0gxV1bYbc&ab_channel=JoanMedia
