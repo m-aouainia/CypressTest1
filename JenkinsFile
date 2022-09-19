@@ -19,7 +19,8 @@ pipeline {
             steps {
                 bat "npm install"
                 //bat "npx cypress open"
-                bat "npx run --browser=${BROWSER} --spec ${SPEC}" 
+                //bat "npx cypress run --browser=${BROWSER} --spec ${SPEC}" 
+                bat "npx run --spec ${SPEC}"
             }
         }
         stage('Deploy') {
