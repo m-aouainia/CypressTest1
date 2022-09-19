@@ -12,13 +12,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application..'
+                bat "npm install"
             }
         }
         stage('Testing ') {
             steps {
                 bat "npm install"
                 bat "npx cypress open"
-                bat "npx cypress run --browser=${BROWSER} --spec ${SPEC}" 
+                bat "npm cypress run --browser=${BROWSER} --spec ${SPEC}" 
             }
         }
         stage('Deploy') {
