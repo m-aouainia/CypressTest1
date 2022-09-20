@@ -19,8 +19,7 @@ pipeline {
             steps {
                 bat "npm install"
                 //bat "npx cypress open"
-                //bat "npx cypress run --browser=${BROWSER} --spec ${SPEC}" 
-                bat "npm run test:ci:record"
+                bat "npx cypress run --browser=${BROWSER} --spec ${SPEC}" 
             }
         }
         stage('Deploy') {
@@ -31,7 +30,7 @@ pipeline {
     }
     post{
         always{
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'Testing Report', reportTitles: '', useWrapperFileDirectly: true])
         }
     }
 }
